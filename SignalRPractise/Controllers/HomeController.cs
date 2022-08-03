@@ -61,7 +61,7 @@ namespace SignalRPractise.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            var user = _userManager.FindByEmailAsync(model.Username).Result;
+            var user = _userManager.FindByNameAsync(model.Username).Result;
             var result = await _signInManager.PasswordSignInAsync(user, model.Password, true, true);
 
             return RedirectToAction("Index");
@@ -72,5 +72,6 @@ namespace SignalRPractise.Controllers
 
             return RedirectToAction("Index");
         }
+        
     }
 }
