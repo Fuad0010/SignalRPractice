@@ -41,7 +41,9 @@ namespace SignalRPractise.Controllers
         }
         public IActionResult Chat()
         {
-            return View();
+            List<AppUser> users = _userManager.Users.ToList();
+
+            return View(users);
         }
         public async Task<IActionResult> CreateUser()
         {
