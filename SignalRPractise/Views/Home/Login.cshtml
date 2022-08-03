@@ -1,7 +1,19 @@
 ﻿
+@model LoginVM
 @{
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
+<form method="post" action="login">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input class="form-control" asp-for="Username">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input class="form-control" asp-for="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 

@@ -26,8 +26,15 @@ using SignalRPractise.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\DEZHURIK\Desktop\ASP\HomeWorks\SignalRPractise\SignalRPractise\Views\_ViewImports.cshtml"
+using SignalRPractise.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99464617055fdb505bb0bb7fd91f9b14f7b0d030", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57be7c6dd999cdb263cb8122578077f986cf5e40", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3b830a43da05c2a0f419f2e7ae55d7124e990aa4", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
