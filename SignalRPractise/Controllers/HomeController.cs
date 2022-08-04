@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using SignalRPractise.Models;
 using SignalRPractise.ViewModels;
@@ -16,12 +17,14 @@ namespace SignalRPractise.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IHubContext<ChatHub> _hubContext;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public HomeController(ILogger<HomeController> logger, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IHubContext<ChatHub> hubContext)
         {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
+            _hubContext = hubContext;
         }
 
         public IActionResult Index()
@@ -73,6 +76,13 @@ namespace SignalRPractise.Controllers
             _signInManager.SignOutAsync();
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> PrivateSend(string id)
+        {
+            AppUser appUser = await _userManager.FindByIdAsync(id);
+            await _hubContext.Clients.Client(appUser.ConnectId).SendAsync("PrivateMessage");
+            return RedirectToAction("chat");
         }
         
     }

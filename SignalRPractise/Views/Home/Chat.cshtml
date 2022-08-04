@@ -39,7 +39,7 @@
         <ul class="list-group">
         @foreach (var item in Model)
        {
-          <li id="@item.Id" class="list-group-item  "><span class="@(item.ConnectId==null? "bg-offline":"bg-online")" style=" display: inline-block; height:15px; width:15px; border-radius:50%; background-color:red;" ></span>@item.Fullname</li>  
+          <li id="@item.Id" class="list-group-item  "><span class="@(item.ConnectId==null? "bg-offline":"bg-online")" style=" display: inline-block; height:15px; width:15px; border-radius:50%; background-color:red;" ></span> <a asp-action="PrivateSend" asp-route-id="@item.Id">@item.Fullname</a> </li>  
        }
         </ul>
     </div>
@@ -76,6 +76,10 @@
                 $(`#${userId}`).find("span").addClass("bg-offline")
                 $(`#${userId}`).find("span").removeClass("bg-online")
             })    
+
+            connection.on("PrivateMessage", function() {
+                alert("salam")
+            })
 
         </script>
     }
