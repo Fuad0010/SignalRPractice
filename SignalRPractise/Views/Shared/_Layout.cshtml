@@ -6,6 +6,18 @@
     <title>@ViewData["Title"] - SignalRPractise</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        .bg-online{
+            background-color:green !important;
+        }
+
+        .bg-offline{
+            background-color:gray !important;
+        }
+
+
+    </style>
 </head>
 <body>
     <header>
@@ -29,6 +41,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Chat">Chat</a>
                         </li>
                     </ul>
                 </div>

@@ -27,12 +27,24 @@ namespace SignalRPractise
                 {
                     AppUser user = _userManager.FindByNameAsync(Context.User.Identity.Name).Result;
                     user.ConnectId = Context.ConnectionId;
-                    _userManager.UpdateAsync(user);
-                _context.SaveChanges();    
+                    _context.SaveChanges();
+                    Clients.All.SendAsync("Userconnect", user.Id);
                 };
 
 
                 return base.OnConnectedAsync();
+            }
+            public override Task OnDisconnectedAsync(Exception exception)
+            {
+                if (Context.User.Identity.IsAuthenticated)
+                {
+                    AppUser user = _userManager.FindByNameAsync(Context.User.Identity.Name).Result;
+                    user.ConnectId = null;
+                    _context.SaveChanges();
+                    Clients.All.SendAsync("Userdisconnect", user.Id);
+                };
+
+            return base.OnDisconnectedAsync(exception);
             }
     } 
 }
